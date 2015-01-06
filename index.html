@@ -1,12 +1,14 @@
-<html ng-app="stratusApp">
+<html ng-app='stratusApp'>
 <head>
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.1/lumen/bootstrap.min.css">
 	<title>Stratus</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script src="app.js"></script>
 </head>
-<body>
-	<input type="text" ng-model="yourName" placeholder="Enter a name here">
+<body ng-controller='WeatherCtrl'>
+	<input type="text" ng-model="yourName" ng-change="getWeather()">
       <h1>Hello, {{ yourName }}!</h1>
+      <h2>{{}}</h2>
 
 </body>
 </html>
