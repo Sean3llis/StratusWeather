@@ -1,0 +1,23 @@
+.main-title {
+	font-size: 4em;
+	margin-left: 30px;
+}
+
+.todayLow {
+	float: left;
+}
+
+.todayHigh {
+	float: right;
+}
+
+.label {
+	margin: 0 5 0 5px;
+	font-size: 1em;
+	/*margin-top: 2.5px;*/
+}
+
+.currentConditions {
+	margin: auto;
+	text-align: center;
+}
