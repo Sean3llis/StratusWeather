@@ -6,11 +6,16 @@
 	<script src="app.js"></script>
 </head>
 <body ng-controller='WeatherCtrl'>
-	<form ng-submit="getWeather()">
-	</form>
-	<input type="text" ng-model="zip">
-      <h1>Weather for {{ zip }}!</h1>
-      <h2>{{}}</h2>
+	<br>
+	<div class="container">
+		<div class="well well-lg">		
+			<form class="form-horizontal" ng-submit="getWeather(zip)">
+				<label for="zip-input" class="control-label">Zip:</label>
+			<input id="zip-input" type="text" ng-model="zip">
+			<button class="btn btn-success" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
