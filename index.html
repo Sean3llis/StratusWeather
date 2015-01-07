@@ -30,18 +30,33 @@
 	<div class="container">	
 		<div ng-show="weather" class="well well-lg">
 			<div class="currentConditions">
-				<h1>Location: {{weather.location.city}}, {{weather.location.region}}</h1>
+				<h1>{{weather.location.city}}, {{weather.location.region}}</h1>
 				<h3>Currently:</h3>
 					<span class="label label-primary">{{weather.item.condition.temp}}&deg{{weather.units.temperature}}</span>
 			</div>
 			<br>
 			<div class="highLow">
-				<span class="label label-warning todayLow">LOW:{{forecast[0].low}}</span>
-				<span class="label label-warning todayHigh">HI:{{forecast[0].high}}</span>
+				<span class="label label-info todayLow">LOW:{{forecast[0].low}}</span>
+				<span class="label label-info todayHigh">HI:{{forecast[0].high}}</span>
 				<div class="progress progress-striped active">
 	  			<div class="progress-bar progress-bar-primary" style="width: {{tempIndex}}%"></div>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<!-- 5 DAY FORECAST -->
+	<div class="container">
+		<div ng-show="weather" class="well well-lg">
+			<div class="row">
+				<div ng-repeat="day in forecast" class="col-sm-6 col-md-4 col-lg-2">
+					<div class="thumbnail">	
+					High: {{day.high}}
+					Low: {{day.low}}
+					</div>
+				</div>
+			
+		</div>
 		</div>
 	</div>
 
