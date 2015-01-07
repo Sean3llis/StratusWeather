@@ -1,3 +1,4 @@
+
 var app = angular.module('stratusApp', [])
 
 app.controller('WeatherCtrl', function($http, $scope){
