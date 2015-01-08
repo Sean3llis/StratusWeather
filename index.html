@@ -13,17 +13,21 @@
 	<div class="container">
 		<div class="well well-lg">
 			<center>
-				<img src="img/Cloudy.svg"/>
+				<img class="main-logo"src="img/Cloud-Fog-Sun.svg"/>
 				<br>
 				<span class="main-title">StratusWeather</span>
+				<br>
+				<br>
 				<form ng-hide="weather" class="form-horizontal" ng-submit="getWeather(zip)">
 					<label for="zip-input" class="control-label">Zip:</label>
 				<input id="zip-input" type="text" ng-model="zip">
-				<button class="btn btn-primary" type="submit">Submit</button>
+				<button ng-show="zip" class="btn btn-primary" type="submit">Submit</button>
 				</form>
 				<br>
 				<i ng-show="zip">showing results for ZIP code {{zip}}...</i>
-				<button class="btn btn-primary">Reset</button>
+				<button ng-show="weather" ng-click="resetWeather()" class="btn btn-primary btn-xs">
+					<i class="fa fa-history"></i> Reset
+				</button>
 			</center>
 		</div>
 	</div>
@@ -32,11 +36,14 @@
 	<div class="container">	
 		<div ng-show="weather" class="well well-lg">
 			<div class="currentConditions">
-				<h1>{{weather.location.city}}, {{weather.location.region}}</h1>
+				<span class="main-title">{{weather.location.city}}, {{weather.location.region}}</span><br>
+				<img src="img/{{weatherImg(weather.item.condition.code)}}.svg"/>
 				<h3>Currently:</h3>
 					<span class="label label-primary">{{weather.item.condition.temp}}&deg{{weather.units.temperature}}</span>
 			</div>
 			<br>
+
+			<!-- HI/LOW PROGRESS BAR -->
 			<div class="highLow">
 				<span class="label label-primary todayLow">LOW:{{forecast[0].low}}</span>
 				<span class="label label-primary todayHigh">HI:{{forecast[0].high}}</span>
@@ -44,6 +51,19 @@
 	  			<div class="progress-bar progress-bar-primary" style="width: {{tempIndex}}%"></div>
 				</div>
 			</div>
+
+			<!-- SUNRISE/SET -->
+			<div class="row">
+				<center>
+					<div class="col-lg-6">
+						<img src="img/Sunrise.svg" /> SUNRISE: {{weather.astronomy.sunrise}}<br>
+					</div>
+					<div class="col-lg-6">
+						<img src="img/Sunset.svg" /> SUNSET: {{weather.astronomy.sunset}}
+					</div>
+				</center>
+			</div>
+
 		</div>
 	</div>
 
@@ -53,9 +73,17 @@
 			<div class="row">
 				<div ng-repeat="day in forecast" class="col-sm-6 col-md-4 col-lg-2">
 					<div class="thumbnail">
-						<p>{{day.day}}: {{day.text}}</p>
-						<i class="fa fa-arrow-circle-up"></i>:{{day.high}}<br>
-						<i class="fa fa-arrow-circle-down"></i>:{{day.low}}
+						<center>
+							<span class="forecast-title">{{day.day}}</span>
+							<p>{{day.text}}</p>
+							<img src="img/{{weatherImg(day.code)}}.svg"/>
+						<button class="btn btn-primary btn-md btn-block">
+							<i class="fa fa-arrow-circle-up"></i> High {{day.high}}<br>
+						</button>
+						<button class="btn btn-primary btn-md btn-block">
+							<i class="fa fa-arrow-circle-down"></i> Low {{day.low}}
+						</button>
+						</center>
 					</div>
 				</div>	
 			</div>

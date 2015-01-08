@@ -1,3 +1,7 @@
+.main-logo {
+	height: 300px;
+}
+
 .main-title {
 	font-size: 3em;
 	margin-left: 30px;
@@ -22,14 +26,15 @@
 	text-align: center;
 }
 
-.fa-arrow-circle-up {
-	color: red;
-}
-
-.fa-arrow-circle-down {
-	color: blue;
+.fa-arrow-circle-up, .fa-arrow-circle-down {
+	color: white;
 }
 
 .thumbnail {
-	font-size: 1.3em;
+	font-size: 1.2em;
+}
+
+.forecast-title {
+	color: #379DC4;
+	font-size: 1.5em;
 }
