@@ -21,3 +21,15 @@
 	margin: auto;
 	text-align: center;
 }
+
+.fa-arrow-circle-up {
+	color: red;
+}
+
+.fa-arrow-circle-down {
+	color: blue;
+}
+
+.thumbnail {
+	font-size: 1.3em;
+}

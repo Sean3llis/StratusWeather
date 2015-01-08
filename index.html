@@ -1,5 +1,6 @@
 <html ng-app='stratusApp'>
 <head>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.1/lumen/bootstrap.min.css">
 	<link rel="stylesheet" href="main.css">
 	<title>Stratus</title>
@@ -22,6 +23,7 @@
 				</form>
 				<br>
 				<i ng-show="zip">showing results for ZIP code {{zip}}...</i>
+				<button class="btn btn-primary">Reset</button>
 			</center>
 		</div>
 	</div>
@@ -50,13 +52,13 @@
 		<div ng-show="weather" class="well well-lg">
 			<div class="row">
 				<div ng-repeat="day in forecast" class="col-sm-6 col-md-4 col-lg-2">
-					<div class="thumbnail">	
-					High: {{day.high}}
-					Low: {{day.low}}
+					<div class="thumbnail">
+						<p>{{day.day}}: {{day.text}}</p>
+						<i class="fa fa-arrow-circle-up"></i>:{{day.high}}<br>
+						<i class="fa fa-arrow-circle-down"></i>:{{day.low}}
 					</div>
-				</div>
-			
-		</div>
+				</div>	
+			</div>
 		</div>
 	</div>
 
