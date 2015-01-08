@@ -10,7 +10,7 @@ app.controller('WeatherCtrl', function($http, $scope){
 			$scope.weather = data.query.results.channel
 			$scope.forecast = data.query.results.channel.item.forecast
 			$scope.tempIndex = (parseInt($scope.weather.item.condition.temp) - parseInt($scope.forecast[0].low)) / (parseInt($scope.forecast[0].high) - parseInt($scope.forecast[0].low)) * 100
-			console.log($scope.weather)
+			// console.log($scope.weather)
 		})
 	}
 	//decide which weather icon SVG to display for the current weather
@@ -33,5 +33,42 @@ app.controller('WeatherCtrl', function($http, $scope){
 		$scope.weather = null
 	}
 
-	
+	$scope.drawChart = function(data){
+		var data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0)",
+            strokeColor: "red",
+            pointColor: "red",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0)",
+            strokeColor: "#379DC4",
+            pointColor: "#379DC4",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 86, 27, 90]
+        }
+    ]
+};
+
+
+		var ctx = document.getElementById("forecast-chart").getContext("2d")
+		var myNewChart = new Chart(ctx).Line(data)
+	}
+
 })
+
+
+
+
+
+

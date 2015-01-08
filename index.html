@@ -6,6 +6,8 @@
 	<title>Stratus</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 	<script src="app.js"></script>
+	<script src="chart.min.js"></script>
+	<script src="forecast.js"></script>
 </head>
 <body ng-controller='WeatherCtrl'>
 	<br>
@@ -26,7 +28,7 @@
 				<br>
 				<i ng-show="zip">showing results for ZIP code {{zip}}...</i>
 				<button ng-show="weather" ng-click="resetWeather()" class="btn btn-primary btn-xs">
-					<i class="fa fa-history"></i> Reset
+					<i class="fa fa-history"></i>  Reset
 				</button>
 			</center>
 		</div>
@@ -37,7 +39,7 @@
 		<div ng-show="weather" class="well well-lg">
 			<div class="currentConditions">
 				<span class="main-title">{{weather.location.city}}, {{weather.location.region}}</span><br>
-				<img src="img/{{weatherImg(weather.item.condition.code)}}.svg"/>
+				<img ng-src="img/{{weatherImg(weather.item.condition.code)}}.svg"/>
 				<h3>Currently:</h3>
 					<span class="label label-primary">{{weather.item.condition.temp}}&deg{{weather.units.temperature}}</span>
 			</div>
@@ -76,7 +78,7 @@
 						<center>
 							<span class="forecast-title">{{day.day}}</span>
 							<p>{{day.text}}</p>
-							<img src="img/{{weatherImg(day.code)}}.svg"/>
+							<img ng-src="img/{{weatherImg(day.code)}}.svg"/>
 						<button class="btn btn-primary btn-md btn-block">
 							<i class="fa fa-arrow-circle-up"></i> High {{day.high}}<br>
 						</button>
@@ -90,6 +92,14 @@
 		</div>
 	</div>
 
+	<div class="container">
+		<div ng-show="weather" class="well well-lg">
+			<button class="btn btn-primary" ng-click="drawChart(forecast)">draw chart</button>
+			<canvas id="forecast-chart" width="600" height="250">
+				
+			</canvas>
+		</div>
+	</div>
 
 
 
