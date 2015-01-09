@@ -5,9 +5,9 @@
 	<link rel="stylesheet" href="main.css">
 	<title>Stratus</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script src="forecast.js"></script>
 	<script src="app.js"></script>
 	<script src="chart.min.js"></script>
-	<script src="forecast.js"></script>
 </head>
 <body ng-controller='WeatherCtrl'>
 	<br>
@@ -40,8 +40,9 @@
 			<div class="currentConditions">
 				<span class="main-title">{{weather.location.city}}, {{weather.location.region}}</span><br>
 				<img ng-src="img/{{weatherImg(weather.item.condition.code)}}.svg"/>
+
 				<h3>Currently:</h3>
-					<span class="label label-primary">{{weather.item.condition.temp}}&deg{{weather.units.temperature}}</span>
+				<span class="label label-primary">{{weather.item.condition.temp}}&deg{{weather.units.temperature}}</span>
 			</div>
 			<br>
 
@@ -55,6 +56,7 @@
 			</div>
 
 			<!-- SUNRISE/SET -->
+			<hr>
 			<div class="row">
 				<center>
 					<div class="col-lg-6">
@@ -66,20 +68,38 @@
 				</center>
 			</div>
 
+			<!-- FEELS LIKE / WIND -->
+
+			<hr>
+			<div class="row">
+				<center>
+					<div class="col-lg-4">
+						<img src="img/Thermometer-75.svg" />FEELS LIKE: {{weather.wind.chill}}&deg{{weather.units.temperature}}
+					</div>
+					<div class="col-lg-4">
+						<img src="img/Wind.svg" />WINDSPEED: {{weather.wind.speed}} {{weather.units.speed}}
+					</div>
+					<div class="col-lg-4">
+						<img src="img/Cloud-Fog-Alt.svg" />HUMIDITY: {{weather.atmosphere.humidity}}%
+					</div>
+				</center>
+			</div>
 		</div>
 	</div>
 
 	<!-- 5 DAY FORECAST -->
 	<div class="container">
 		<div ng-show="weather" class="well well-lg">
+			<center><span class="main-title">5 Day Forecast</span></center>
 			<div class="row">
 				<div ng-repeat="day in forecast" class="col-sm-6 col-md-4 col-lg-2">
 					<div class="thumbnail">
 						<center>
 							<span class="forecast-title">{{day.day}}</span>
 							<p>{{day.text}}</p>
+							<hr>
 							<img ng-src="img/{{weatherImg(day.code)}}.svg"/>
-						<button class="btn btn-primary btn-md btn-block">
+						<button class="btn btn-danger btn-md btn-block">
 							<i class="fa fa-arrow-circle-up"></i> High {{day.high}}<br>
 						</button>
 						<button class="btn btn-primary btn-md btn-block">
@@ -87,21 +107,49 @@
 						</button>
 						</center>
 					</div>
-				</div>	
+				</div>
+
+				<!-- LEARN MORE -->
+				<div class="col-sm-6 col-md-4 col-lg-2">
+					<div class="thumbnail">
+						<center>
+							<span class="forecast-title">Read More</span>
+							<p>at Yahoo! Weather</p>
+							<hr>
+							<img src="img/yahoo5.svg"/>
+							<a href="http://www.weather.yahoo.com" title="">
+								<button class="btn btn-default btn-md btn-block">
+									<i class="fa fa-external-link-square"></i> Yahoo! Weather<br>
+								</button>
+							</a>
+						</center>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
 		<div ng-show="weather" class="well well-lg">
-			<button class="btn btn-primary" ng-click="drawChart(forecast)">draw chart</button>
-			<canvas id="forecast-chart" width="600" height="250">
-				
-			</canvas>
+			<button ng-hide="chartDrawn" class="btn btn-primary" ng-click="drawChart(forecast)">
+				<i class="fa fa-line-chart"></i>  draw chart
+			</button>
+			<div class="row">
+				<div class="col-lg-10">
+					<br>
+					<canvas id="forecast-chart">
+					</canvas>
+				</div>
+				<div class="col-lg-2">
+					<div class="legend">
+						<br>
+						<br>
+						<span ng-show="chartDrawn" class="label label-danger">HIGH</span><br><br>
+						<span ng-show="chartDrawn" class="label label-primary">LOW</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-
 
 </body>
 </html>

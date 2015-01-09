@@ -26,6 +26,10 @@
 	text-align: center;
 }
 
+.currentConditions span {
+
+}
+
 .fa-arrow-circle-up, .fa-arrow-circle-down {
 	color: white;
 }
@@ -37,4 +41,8 @@
 .forecast-title {
 	color: #379DC4;
 	font-size: 1.5em;
+}
+
+.degrees {
+	font-size: 2em;
 }
