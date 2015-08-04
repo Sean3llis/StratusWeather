@@ -1,1 +1,1 @@
-StratusWeather is an AngularApp I've built to teach myself the basics of AngularJS and how to use $http. I also included ChartJS because I wanted it to have a flat, minimal dashboard feel and that library is perfect. Please let me know any code-smells you see! I know it needs a refactor or two ;).
+StratusWeather is an AngularApp I've built to teach myself the basics of AngularJS and how to use $http. I also included ChartJS because I wanted it to have a flat, minimal dashboard feel and that library is perfect. Open to critique.
